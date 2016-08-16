@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'fulfillment'
-set :repo_url, 'git@github.com:sparc-request/sparc-fulfillment.git'
+set :repo_url, 'https://github.com/uofu-ccts/sparc-fulfillment'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
