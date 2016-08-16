@@ -51,4 +51,34 @@ namespace :deploy do
   end
 end
 
+
+namespace :setup do
+  desc "backup all configuration fiels"
+  task :backup_config do
+    on roles(:app) do
+      within "#{current_path}" do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, "exec rake backup:config"
+          download! "#{current_path}/tmp/config_yml.zip", "tmp/#{fetch(:rails_env)}_config_yml.zip"
+        end
+      end
+    end
+  end
+
+  desc "Upload database.yml file."
+  task :upload_yml do
+    on roles(:app) do
+      execute "mkdir -p #{shared_path}/config"
+      upload! StringIO.new(File.read("config/database.yml.example")), "#{shared_path}/config/database.yml"
+      upload! StringIO.new(File.read("config/secrets.yml")), "#{shared_path}/config/secrets.yml"
+      upload! StringIO.new(File.read("config/faye.yml.example")), "#{shared_path}/config/faye.yml"
+      upload! StringIO.new(File.read("config/shards.yml.example")), "#{shared_path}/config/shards.yml"
+      upload! StringIO.new(File.read("dotenv.example")), "#{shared_path}/.env"
+      upload! StringIO.new(File.read(".ruby-version")), "#{shared_path}/.ruby-version"
+      upload! StringIO.new(File.read(".ruby-gemset")), "#{shared_path}/.ruby-gemset"
+    end
+  end
+
+end
+
 after "deploy:restart", "delayed_job:restart"

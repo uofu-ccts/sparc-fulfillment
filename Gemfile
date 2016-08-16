@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.5'
+
 gem 'omniauth-shibboleth'
 gem 'activerecord-import'
 gem 'acts_as_list'
@@ -80,3 +82,5 @@ group :test do
   gem 'webmock', '~> 1.20.4'
   gem 'vcr', '~> 2.9.3'
 end
+
+gem 'colorize'
