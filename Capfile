@@ -24,6 +24,8 @@ require 'capistrano/rvm'
 require 'capistrano/passenger'
 require 'capistrano/delayed-job'
 require 'capistrano/rails'
+require 'capistrano/linked_files'
+
 
 # required to deploy with dotenv
 require 'dotenv'
