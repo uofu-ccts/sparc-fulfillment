@@ -410,6 +410,7 @@ DEPENDENCIES
   bootstrap-select-rails
   bootstrap3-datetimepicker-rails (~> 4.0.0)
   capistrano (~> 3.0)
+  capistrano-bundler (~> 1.1.2)
   capistrano-passenger
   capistrano-rails (~> 1.1)
   capistrano-rvm
