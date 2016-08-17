@@ -44,7 +44,7 @@ gem 'underscore-rails', '~> 1.8.3'
 gem 'will_paginate'
 gem 'yajl-ruby', '~> 1.2.1', require: 'yajl'
 
-group :deploy do
+group :development do
   gem 'capistrano3-delayed-job', '~> 1.0'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-bundler', '~> 1.1.2'
