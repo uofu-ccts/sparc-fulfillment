@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.1.5'
-
 gem 'omniauth-shibboleth'
 gem 'activerecord-import'
 gem 'acts_as_list'
