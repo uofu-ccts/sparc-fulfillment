@@ -323,9 +323,6 @@ GEM
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
     rubyzip (1.0.0)
-    rvm1-capistrano3 (1.4.0)
-      capistrano (~> 3.0)
-      sshkit (>= 1.2)
     safe_yaml (1.0.4)
     sass (3.4.14)
     sass-rails (5.0.3)
@@ -457,7 +454,6 @@ DEPENDENCIES
   rspec-activejob (~> 0.4.0)
   rspec-collection_matchers
   rspec-rails
-  rvm1-capistrano3
   sass-rails
   sdoc (~> 0.4.0)
   shoulda-callback-matchers
@@ -476,3 +472,6 @@ DEPENDENCIES
   webmock (~> 1.20.4)
   will_paginate
   yajl-ruby (~> 1.2.1)
+
+BUNDLED WITH
+   1.11.2
