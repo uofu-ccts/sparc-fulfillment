@@ -31,7 +31,6 @@ server '127.0.0.1', user: 'vagrant', roles: %w{app db web}, :primary => true
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 set :deploy_to, '/home/vagrant/sparc-fulfillment'
-set :branch, 'production'
 set :rails_env, 'production'
 set :passenger_restart_with_touch, true
 set :rvm_ruby_version, '2.1.5@fulfillment-production --create'
