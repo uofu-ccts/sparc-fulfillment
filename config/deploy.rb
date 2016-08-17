@@ -5,7 +5,7 @@ set :application, 'fulfillment'
 set :repo_url, 'https://github.com/uofu-ccts/sparc-fulfillment'
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, ENV['branch'] || ask('Branch: ', nil)
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/var/www/rails/fulfillment'
