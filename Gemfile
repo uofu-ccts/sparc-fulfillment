@@ -45,12 +45,14 @@ gem 'will_paginate'
 gem 'yajl-ruby', '~> 1.2.1', require: 'yajl'
 
 group :deploy do
-  gem 'capistrano', '~> 3.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
-  gem 'capistrano-rvm'
-  gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano-passenger'
   gem 'capistrano3-delayed-job', '~> 1.0'
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'rvm1-capistrano3', require: false
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-linked-files'
+  gem 'capistrano-rvm'
 end
 
 
