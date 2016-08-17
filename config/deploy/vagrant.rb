@@ -33,6 +33,7 @@ server '127.0.0.1', user: 'vagrant', roles: %w{app db web}, :primary => true
 set :deploy_to, '/home/vagrant/sparc-fulfillment'
 set :rails_env, 'production'
 set :passenger_restart_with_touch, true
+set :rvm_ruby_version, '2.1.5@fulfillment-production --create'
 #set :passenger_environment_variables, { :path => '/usr/local/rvm/gems/ruby-1.9.3-p286/bin:$PATH' }
 #set :passenger_rvm_ruby_version, 'ruby-1.9.3-p286'
 
