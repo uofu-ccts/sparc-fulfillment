@@ -77,7 +77,6 @@ namespace :setup do
       upload! StringIO.new(File.read("config/shards.yml.example")), "#{shared_path}/config/shards.yml"
       upload! StringIO.new(File.read("dotenv.example")), "#{shared_path}/.env"
       upload! StringIO.new(File.read(".ruby-version")), "#{shared_path}/.ruby-version"
-      upload! StringIO.new(File.read(".ruby-gemset")), "#{shared_path}/.ruby-gemset"
     end
   end
 
