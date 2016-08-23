@@ -84,3 +84,4 @@ group :test do
 end
 
 gem 'colorize'
+gem 'omniauth-cas'

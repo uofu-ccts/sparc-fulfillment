@@ -2,7 +2,7 @@ class Identity < ActiveRecord::Base
 
   include SparcShard
 
-  devise :database_authenticatable, :rememberable, :trackable, :omniauthable
+  devise :database_authenticatable, :rememberable, :trackable, :omniauthable, omniauth_providers: [:cas]
 
   has_one :identity_counter, dependent: :destroy
 
@@ -14,6 +14,13 @@ class Identity < ActiveRecord::Base
   has_many :super_users
 
   delegate :tasks_count, :unaccessed_documents_count, to: :identity_counter
+
+  def self.find_for_cas_oauth(auth)
+    uid = auth.uid
+    domain = ENV.fetch('domain') || 'utah.edu'
+    ldap_uid = "#{uid}@#{domain}"
+    Identity.find_by_ldap_uid(ldap_uid)
+  end
 
   def protocols
     if clinical_providers.any?
