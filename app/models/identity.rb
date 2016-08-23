@@ -16,6 +16,10 @@ class Identity < ActiveRecord::Base
   delegate :tasks_count, :unaccessed_documents_count, to: :identity_counter
 
   def self.find_for_cas_oauth(auth)
+    uid = auth.uid
+    domain = ENV.fetch('domain') || 'utah.edu'
+    ldap_uid = "#{uid}@#{domain}"
+    Identity.find_by_ldap_uid(ldap_uid)
   end
 
   def protocols

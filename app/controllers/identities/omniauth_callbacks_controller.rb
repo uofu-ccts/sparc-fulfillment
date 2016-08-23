@@ -32,7 +32,7 @@ class Identities::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
   def cas
     @identity = Identity.find_for_cas_oauth(request.env['omniauth.auth'])
 
-    if @identity.persisted?
+    unless @identity.blank?
       sign_in_and_redirect(@identity, event: :authentication)
       set_flash_message(:notice, :success, kind: 'CAS') if is_navigational_format?
     else
