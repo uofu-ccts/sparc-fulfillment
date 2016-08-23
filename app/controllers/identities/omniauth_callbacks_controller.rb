@@ -28,9 +28,19 @@ class Identities::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
       render :file => 'public/401.html', :status => :unauthorized, :layout => false
     end
   end
-  
+
+  def cas
+    @identity = Identity.find_for_cas_oauth(request.env['omniauth.auth'])
+
+    unless @identity.blank?
+      sign_in_and_redirect(@identity, event: :authentication)
+      set_flash_message(:notice, :success, kind: 'CAS') if is_navigational_format?
+    else
+      failure
+    end
+  end
+
   def failure
     render :file => 'public/401.html', :status => :unauthorized, :layout => false
   end
 end
-
