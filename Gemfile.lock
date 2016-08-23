@@ -238,6 +238,10 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-cas (1.1.0)
+      addressable (~> 2.3)
+      nokogiri (~> 1.5)
+      omniauth (~> 1.2.0)
     omniauth-shibboleth (1.2.1)
       omniauth (>= 1.0.0)
     options (2.3.2)
@@ -442,6 +446,7 @@ DEPENDENCIES
   mysql2
   net-ldap
   omniauth
+  omniauth-cas
   omniauth-shibboleth
   paper_trail (~> 4.0.0.beta)
   paranoia (~> 2.0)
@@ -472,6 +477,3 @@ DEPENDENCIES
   webmock (~> 1.20.4)
   will_paginate
   yajl-ruby (~> 1.2.1)
-
-BUNDLED WITH
-   1.11.2
