@@ -45,4 +45,5 @@ config/database.yml
 config/faye.yml
 config/setup_load_paths.rb
 config/shards.yml
+config/cas.yml
 fulfill.sql
