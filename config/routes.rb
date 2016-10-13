@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     devise_for :identities, :controllers => { :omniauth_callbacks => "identities/omniauth_callbacks" }
   end
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
+
   resources :protocols
   resources :visit_groups, only: [:new, :create, :edit, :update, :destroy]
   resources :components, only: [:update]

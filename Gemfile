@@ -44,6 +44,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'underscore-rails', '~> 1.8.3'
 gem 'will_paginate'
 gem 'yajl-ruby', '~> 1.2.1', require: 'yajl'
+gem "delayed_job_web"
 
 group :development do
   gem 'capistrano3-delayed-job', '~> 1.0'
