@@ -147,6 +147,7 @@ class StudyScheduleReport < Report
   end
 
   def maximum_visit_count
+    return 0 if @protocol.arms.empty?
     @protocol.arms.map(&:visit_count).max
   end
 
