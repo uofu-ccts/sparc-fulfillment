@@ -47,6 +47,7 @@ namespace :deploy do
       within current_path do
         execute :bundle, "exec thin -C config/faye.yml stop"
         execute :bundle, "exec thin -C config/faye.yml start"
+        execute :chmod, '777', 'tmp'
       end
       # Here we can do anything such as:
       # within release_path do
