@@ -88,3 +88,5 @@ end
 
 gem 'omniauth-cas'
 gem 'colorize'
+
+gem 'whenever', :require => false
