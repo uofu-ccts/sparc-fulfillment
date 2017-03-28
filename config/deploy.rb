@@ -24,7 +24,8 @@ lock '3.4.0'
 set :rvm_ruby_version, '2.1.5'
 
 set :application, 'fulfillment'
-set :repo_url, 'https://github.com/uofu-ccts/sparc-fulfillment'
+
+set :repo_url, 'git@github.com:bmic-development/sparc-fulfillment.git'
 
 # Default branch is :master
 set :branch, ENV['branch'] || ask('Branch: ', nil)

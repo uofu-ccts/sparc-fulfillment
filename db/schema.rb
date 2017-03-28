@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707010804) do
+ActiveRecord::Schema.define(version: 20161220161903) do
 
   create_table "appointment_statuses", force: :cascade do |t|
     t.string   "status",         limit: 255
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20160707010804) do
     t.integer  "position",        limit: 4
     t.integer  "composable_id",   limit: 4
     t.string   "composable_type", limit: 255
-    t.boolean  "selected",                    default: false
+    t.boolean  "selected",        limit: 1,   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
@@ -260,6 +260,22 @@ ActiveRecord::Schema.define(version: 20160707010804) do
   add_index "protocols", ["sparc_id"], name: "index_protocols_on_sparc_id", using: :btree
   add_index "protocols", ["sub_service_request_id"], name: "index_protocols_on_sub_service_request_id", using: :btree
 
+  create_table "services", force: :cascade do |t|
+    t.integer  "sparc_id",        limit: 4
+    t.decimal  "cost",                          precision: 10
+    t.string   "name",            limit: 255
+    t.string   "abbreviation",    limit: 255
+    t.text     "description",     limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+    t.integer  "sparc_core_id",   limit: 4
+    t.string   "sparc_core_name", limit: 255
+  end
+
+  add_index "services", ["deleted_at"], name: "index_services_on_deleted_at", using: :btree
+  add_index "services", ["sparc_id"], name: "index_services_on_sparc_id", unique: true, using: :btree
+
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", limit: 255,   null: false
     t.text     "data",       limit: 65535
@@ -272,7 +288,7 @@ ActiveRecord::Schema.define(version: 20160707010804) do
 
   create_table "tasks", force: :cascade do |t|
     t.date     "due_at"
-    t.boolean  "complete",                      default: false
+    t.boolean  "complete",        limit: 1,     default: false
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -287,13 +303,36 @@ ActiveRecord::Schema.define(version: 20160707010804) do
   add_index "tasks", ["assignee_id"], name: "index_tasks_on_assignee_id", using: :btree
   add_index "tasks", ["identity_id"], name: "index_tasks_on_identity_id", using: :btree
 
-  create_table "versions", force: :cascade do |t|
-    t.string   "item_type",  limit: 255,   null: false
-    t.integer  "item_id",    limit: 4,     null: false
-    t.string   "event",      limit: 255,   null: false
-    t.string   "whodunnit",  limit: 255
-    t.text     "object",     limit: 65535
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "",                           null: false
+    t.string   "encrypted_password",     limit: 255, default: "",                           null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,                            null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "time_zone",              limit: 255, default: "Eastern Time (US & Canada)"
+    t.integer  "tasks_count",            limit: 4,   default: 0
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",      limit: 255,   null: false
+    t.integer  "item_id",        limit: 4,     null: false
+    t.string   "event",          limit: 255,   null: false
+    t.string   "whodunnit",      limit: 255
+    t.text     "object",         limit: 65535
+    t.datetime "created_at"
+    t.text     "object_changes", limit: 65535
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
