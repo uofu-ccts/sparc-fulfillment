@@ -34,7 +34,7 @@ class StudyScheduleController < ApplicationController
     hash.each do |arm_id, page|
       arm = Arm.find(arm_id)
       @arms_and_pages[arm_id] = {arm: arm, page: page}
-    end
+    end unless hash.nil?
     @tab = params[:tab]
   end
 
