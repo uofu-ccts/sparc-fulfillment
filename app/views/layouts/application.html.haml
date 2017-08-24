@@ -23,7 +23,7 @@
   %head
     %meta{ charset: 'utf-8' }
     %meta{ "http-equiv"=>"X-UA-Compatible", "content"=>"IE=edge"}
-    %title= t('default_title') 
+    %title= t('default_title')
     :javascript
       window.I18n = #{current_translations.to_json.html_safe}
     = javascript_include_tag 'libraries'
@@ -31,6 +31,10 @@
     = csrf_meta_tags
     = include_gon
   %body{class: body_class}
+    - if ENV['site_name'] != 'production'
+      .alert.alert-danger
+        %p.text-center{:style => "letter-spacing: 8px"}
+          = ENV['site_name']
     .container-fluid
       .row.header= render "header"
       .row.nav= render "nav"
