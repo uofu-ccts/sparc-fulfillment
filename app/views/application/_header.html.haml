@@ -19,11 +19,11 @@
 -# TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.~
 
 .col-xs-3
-  = link_to image_tag("sctr_header.jpg", height: '110', class: 'sctr-header img-responsive'),
+  = link_to image_tag(ENV['org_logo'] || "sctr_header.jpg", height: '110', class: 'sctr-header img-responsive'),
     "http://sctr.musc.edu"
 .col-xs-6
   = link_to image_tag("sparc_fulfillment_header.jpg", height: '110',
     class: 'center-block fulfillment-header img-responsive'), root_path
 .col-xs-3
-  = link_to image_tag("musc_header.jpg", height: '110', class: 'musc-header img-responsive'),
+  = link_to image_tag(ENV['institution_logo'] || "musc_header.jpg", height: '110', class: 'musc-header img-responsive'),
     "http://www.musc.edu"
